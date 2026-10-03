@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CloudTask</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- Header -->
+        <header class="header">
+            <div class="brand">
+                <div class="brand-icon">✓</div>
+
+                <div>
+                    <h1>CloudTask</h1>
+                    <p>Simple Task Management</p>
+                </div>
+            </div>
+        </header>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Create Task Section -->
+            <section class="create-task-section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Create New Task</h2>
+                        <p>Add a task to your CloudTask workspace.</p>
+                    </div>
+                </div>
+
+                <form id="task-form">
+
+                    <div class="form-group">
+                        <label for="title">Task Title</label>
+
+                        <input
+                            type="text"
+                            id="title"
+                            name="title"
+                            placeholder="Enter task title"
+                            maxlength="100"
+                            required
+                        >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+
+                        <textarea
+                            id="description"
+                            name="description"
+                            placeholder="Enter task description"
+                            maxlength="500"
+                            rows="4"
+                        ></textarea>
+                    </div>
+
+
+                    <div class="form-actions">
+
+                        <button
+                            type="submit"
+                            id="create-task-btn"
+                            class="primary-btn"
+                        >
+                            Add Task
+                        </button>
+
+                        <button
+                            type="button"
+                            id="cancel-edit-btn"
+                            class="secondary-btn hidden"
+                        >
+                            Cancel
+                        </button>
+
+                    </div>
+
+                </form>
+
+                <!-- Error / Success Message -->
+                <div
+                    id="form-message"
+                    class="message hidden"
+                    role="alert"
+                ></div>
+
+            </section>
+
+
+            <!-- Task List Section -->
+            <section class="tasks-section">
+
+                <div class="section-header task-list-header">
+
+                    <div>
+                        <h2>Your Tasks</h2>
+                        <p>Manage your tasks from one place.</p>
+                    </div>
+
+                    <div class="task-count">
+                        <span id="task-count">0</span>
+                        <span>Tasks</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Loading -->
+                <div
+                    id="loading"
+                    class="loading"
+                >
+                    Loading tasks...
+                </div>
+
+
+                <!-- Empty State -->
+                <div
+                    id="empty-state"
+                    class="empty-state hidden"
+                >
+                    <div class="empty-icon">✓</div>
+
+                    <h3>No tasks yet</h3>
+
+                    <p>
+                        Create your first task using the form above.
+                    </p>
+                </div>
+
+
+                <!-- Tasks Container -->
+                <div
+                    id="task-list"
+                    class="task-list"
+                ></div>
+
+            </section>
+
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>CloudTask &copy; 2026</p>
+            <p>Spring Boot REST API</p>
+        </footer>
+
+    </div>
+
+
+    <!-- Edit Task Modal -->
+    <div
+        id="edit-modal"
+        class="modal hidden"
+    >
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Edit Task</h2>
+                    <p>Update the task details.</p>
+                </div>
+
+                <button
+                    type="button"
+                    id="close-modal-btn"
+                    class="close-btn"
+                    aria-label="Close"
+                >
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="edit-task-form">
+
+                <input
+                    type="hidden"
+                    id="edit-task-id"
+                >
+
+
+                <div class="form-group">
+
+                    <label for="edit-title">
+                        Task Title
+                    </label>
+
+                    <input
+                        type="text"
+                        id="edit-title"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="edit-description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="edit-description"
+                        maxlength="500"
+                        rows="4"
+                    ></textarea>
+
+                </div>
+
+
+                <div class="form-group checkbox-group">
+
+                    <label>
+                        <input
+                            type="checkbox"
+                            id="edit-completed"
+                        >
+
+                        <span>Mark task as completed</span>
+                    </label>
+
+                </div>
+
+
+                <div
+                    id="edit-message"
+                    class="message hidden"
+                    role="alert"
+                ></div>
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancel-modal-btn"
+                        class="secondary-btn"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-btn"
+                    >
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
